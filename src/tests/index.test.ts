@@ -257,6 +257,15 @@ describe("SVG to image conversion", () => {
     }, 2000);
   });
 
+  test("Wait for browser destruction with custom timeout", async (done) => {
+    const timeout = 2000
+    await svgToImg.from(responsiveSvgBuffer).toJpeg({destroyBrowserTimeout: 2000});
+
+    setTimeout(async () => {
+      done();
+    }, timeout + 500);
+  });
+
   test("Test multiple requests in parallel", async (done) => {
     let errors = 0;
 

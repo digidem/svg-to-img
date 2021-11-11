@@ -39,7 +39,7 @@ const getBrowser = async () => {
         }
     });
 };
-const scheduleBrowserForDestruction = () => {
+const scheduleBrowserForDestruction = (timeout = 500) => {
     clearTimeout(browserDestructionTimeout);
     browserDestructionTimeout = setTimeout(async () => {
         /* istanbul ignore next */
@@ -47,7 +47,7 @@ const scheduleBrowserForDestruction = () => {
             browserState = "closed";
             await browserInstance.close();
         }
-    }, 500);
+    }, timeout);
 };
 const convertSvg = async (inputSvg, passedOptions) => {
     const svg = Buffer.isBuffer(inputSvg) ? inputSvg.toString("utf8") : inputSvg;
@@ -72,7 +72,7 @@ const convertSvg = async (inputSvg, passedOptions) => {
         clip: options.clip,
         jpegBackground: constants_1.config.jpegBackground
     }));
-    scheduleBrowserForDestruction();
+    scheduleBrowserForDestruction(options.destroyBrowserTimeout);
     const buffer = Buffer.from(base64, "base64");
     if (options.path) {
         await helpers_1.writeFileAsync(options.path, buffer);

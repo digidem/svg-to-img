@@ -13,6 +13,7 @@ export interface IOptions {
     clip?: IBoundingBox;
     background?: string;
     encoding?: "base64" | "utf8" | "binary" | "hex";
+    destroyBrowserTimeout?: number;
 }
 export interface IShorthandOptions extends IOptions {
     type?: never;
