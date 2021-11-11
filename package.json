@@ -1,8 +1,8 @@
 {
-  "name": "svg-to-img",
+  "name": "@digidem/svg-to-img",
   "version": "2.0.9",
   "description": "A node.js library to convert SVGs to images built with Puppeteer.",
-  "homepage": "https://github.com/etienne-martin/svg-to-img",
+  "homepage": "https://github.com/digidem/svg-to-img",
   "keywords": [
     "svg",
     "png",
@@ -75,10 +75,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/etienne-martin/svg-to-img"
+    "url": "https://github.com/digidem/svg-to-img"
   },
   "bugs": {
-    "url": "https://github.com/etienne-martin/svg-to-img/issues"
+    "url": "https://github.com/digidem/svg-to-img/issues"
   },
   "engines": {
     "node": ">= 7.6.0"
