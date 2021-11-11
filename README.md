@@ -114,6 +114,7 @@ The method returns a svg instance based on the given argument.
     - `height` <[number]> height of clipping area
   - `background` <[string]> background color applied to the output image, must be a valid [CSS color value](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
   - `encoding` <[string]> Specify encoding, can be either `base64`, `utf8`, `binary` or `hex`. Returns a `Buffer` if this option is omitted.
+  - `destroyBrowserTimeout` <[number]> Specify timeout (in milliseconds) used for scheduling browser destruction. Defaults to `500`. This is useful if you need to increase it due to usage with something like `Promise.all` (see [relevant issue](https://github.com/etienne-martin/svg-to-img/issues/22))
 - returns: <[Promise]<Buffer|String>> Promise which resolves to the output image.
 
 ### svg.toPng([options])

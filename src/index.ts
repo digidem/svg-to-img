@@ -46,7 +46,7 @@ const getBrowser = async (): Promise<puppeteer.Browser> => {
   });
 };
 
-const scheduleBrowserForDestruction = () => {
+const scheduleBrowserForDestruction = (timeout: number = 500) => {
   clearTimeout(browserDestructionTimeout);
   browserDestructionTimeout = setTimeout(async () => {
     /* istanbul ignore next */
@@ -54,7 +54,7 @@ const scheduleBrowserForDestruction = () => {
       browserState = "closed";
       await browserInstance.close();
     }
-  }, 500);
+  }, timeout);
 };
 
 const convertSvg = async (inputSvg: Buffer|string, passedOptions: IOptions): Promise<Buffer|string> => {
@@ -85,7 +85,7 @@ const convertSvg = async (inputSvg: Buffer|string, passedOptions: IOptions): Pro
     jpegBackground: config.jpegBackground
   }));
 
-  scheduleBrowserForDestruction();
+  scheduleBrowserForDestruction(options.destroyBrowserTimeout);
 
   const buffer = Buffer.from(base64, "base64");
 
